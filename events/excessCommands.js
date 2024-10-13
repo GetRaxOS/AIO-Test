@@ -1,3 +1,4 @@
+const { serverConfigCollection } = require('../mongodb');
 const { EmbedBuilder } = require('discord.js');
 const fs = require('fs');
 const path = require('path');
@@ -29,14 +30,18 @@ module.exports = {
         };
 
         if (config.excessCommands) {
-            command = require(getCommandPath('lavalink', commandName));
-            if (!command && config.excessCommands.troll && fs.existsSync(getCommandPath('troll', commandName))) {
+            if (config.excessCommands.lavalink && fs.existsSync(getCommandPath('lavalink', commandName))) {
+                command = require(getCommandPath('lavalink', commandName));
+            } else if (config.excessCommands.troll && fs.existsSync(getCommandPath('troll', commandName))) {
                 command = require(getCommandPath('troll', commandName));
-            } else if (!command && config.excessCommands.other && fs.existsSync(getCommandPath('other', commandName))) {
+            } else if (config.excessCommands.other && fs.existsSync(getCommandPath('other', commandName))) {
                 command = require(getCommandPath('other', commandName));
-            } else if (!command && config.excessCommands.utility && fs.existsSync(getCommandPath('utility', commandName))) {
+            } else if (config.excessCommands.utility && fs.existsSync(getCommandPath('utility', commandName))) {
                 command = require(getCommandPath('utility', commandName));
             }
+        } else {
+            console.error('excessCommands is not defined in the config file.');
+            return message.reply('Command configuration is missing.');
         }
 
         if (!command) return;
@@ -60,14 +65,16 @@ async function logCommandCounts() {
     const folders = ['lavalink', 'troll', 'other', 'utility'];
     const basePath = path.join(__dirname, '..', 'excesscommands');
     let totalCommands = 0;
-    const counts = []; // Added initialization for counts
 
-    // Loop to count commands (assuming this was intended)
-    for (const folder of folders) {
-        const commandFiles = fs.readdirSync(path.join(basePath, folder)).filter(file => file.endsWith('.js'));
-        counts.push({ folder, count: commandFiles.length, status: 'Enabled' });
-        totalCommands += commandFiles.length;
-    }
+    const counts = folders.map(folder => {
+        const folderPath = path.join(basePath, folder);
+        let count = 0;
+
+        count = fs.readdirSync(folderPath).filter(file => file.endsWith('.js')).length;
+        totalCommands += count;
+
+        return { folder, count };
+    });
 
     const maxFolderLength = Math.max(...counts.map(({ folder }) => folder.length));
     const totalCountLength = `Total number of commands: ${totalCommands}`.length;
@@ -77,8 +84,8 @@ async function logCommandCounts() {
     const line = `└${'─'.repeat(boxWidth - 2)}┘`;
     console.log('┌' + '─'.repeat(boxWidth - 2) + '┐');
 
-    counts.forEach(({ folder, count, status }) => {
-        const lineContent = `Folder: ${folder.padEnd(maxFolderLength)} Number of commands: ${status === 'Disabled' ? 'Disabled' : count.toString().padStart(2)}`;
+    counts.forEach(({ folder, count }) => {
+        const lineContent = `Folder: ${folder.padEnd(maxFolderLength)} Number of commands: ${count.toString().padStart(2)}`;
         console.log(`│ ${lineContent.padEnd(boxWidth - 2)} `);
     });
 
