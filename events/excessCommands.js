@@ -42,9 +42,6 @@ module.exports = {
             } else if (config.excessCommands.utility && fs.existsSync(getCommandPath('utility', commandName))) {
                 command = require(getCommandPath('utility', commandName));
             }
-        } else {
-            console.error('excessCommands is not defined in the config file.');
-            return message.reply('Command configuration is missing.');
         }
 
         if (!command) return;
