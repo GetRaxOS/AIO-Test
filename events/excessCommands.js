@@ -1,4 +1,3 @@
-const { hentaiCommandCollection, serverConfigCollection } = require('../mongodb');
 const { EmbedBuilder } = require('discord.js');
 const fs = require('fs');
 const path = require('path');
@@ -10,7 +9,6 @@ module.exports = {
         if (message.author.bot) return;
 
        
-        const hentaiSettings = await hentaiCommandCollection.findOne({ serverId: message.guild.id });
 
       
         let serverConfig;
@@ -36,12 +34,6 @@ module.exports = {
 
         
         if (config.excessCommands) {
-            if (fs.existsSync(getCommandPath('hentai', commandName))) {
-                if (!hentaiSettings || !hentaiSettings.status) {
-                    return message.reply('Hentai commands are currently disabled.');
-                }
-                command = require(getCommandPath('hentai', commandName));
-            } else if (config.excessCommands.lavalink && fs.existsSync(getCommandPath('lavalink', commandName))) {
                 command = require(getCommandPath('lavalink', commandName));
             } else if (config.excessCommands.troll && fs.existsSync(getCommandPath('troll', commandName))) {
                 command = require(getCommandPath('troll', commandName));
@@ -76,23 +68,9 @@ module.exports = {
 
 
 async function logCommandCounts() {
-    const folders = ['hentai', 'lavalink', 'troll', 'other', 'utility'];
+    const folders = ['lavalink', 'troll', 'other', 'utility'];
     const basePath = path.join(__dirname, '..', 'excesscommands');
     let totalCommands = 0;
-
-    // Fetch all hentai command settings from MongoDB
-    const hentaiSettings = await hentaiCommandCollection.find({ status: true }).toArray();
-
-    const counts = folders.map(folder => {
-        const folderPath = path.join(basePath, folder);
-        let count = 0;
-       
-            count = fs.readdirSync(folderPath).filter(file => file.endsWith('.js')).length;
-            totalCommands += count;
-        
-
-        return { folder, count };
-    });
 
     const maxFolderLength = Math.max(...counts.map(({ folder }) => folder.length));
     const totalCountLength = `Total number of commands: ${totalCommands}`.length;
