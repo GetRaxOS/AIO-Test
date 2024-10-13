@@ -6,7 +6,7 @@ module.exports = {
     execute(client) {
   
         const activities = [
-            { name: 'Rax 🎃', type: ActivityType.Watching },
+            { name: '🎃 Rax 🎃', type: ActivityType.Custom },
         ];
 
      
