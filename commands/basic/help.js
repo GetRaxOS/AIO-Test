@@ -240,21 +240,19 @@ module.exports = {
                     title: 'Bot Information',
                     description: `Welcome to the help command! This bot provides a variety of commands to enhance your server experience. Below are the categories and the number of commands available in each.`,
                     commands: [
-                        `**💜 Bot Developer:** GlaceYT\n`+
+                        `**💜 Bot Developer:** Fuze\n`+
                         `**Bot Version:** 1.0.0\n`+
-                        `**Total Servers:** ${totalServers}\n`+
-                        `**Total Members:** ${totalMembers}\n`+
                         `**Bot Uptime:** ${uptimeHours}h ${uptimeMinutes}m ${uptimeSeconds}s\n`+
                         `**Total Commands:** ${totalCommands}\n`+
                         `**Enabled Categories:** ${enabledCategoriesList.join(', ')}\n`+
                         `**Disabled Categories:** ${disabledCategoriesList.join(', ')}\n`,
                     ],
-                    image: "https://cdn.discordapp.com/attachments/1264134884432285766/1270352605154902151/GlaceYT.gif?ex=66b3638f&is=66b2120f&hm=23878b54affd61573b105db7c1c016eb730911dc762b3fbabac5a32cbc884119&",
-                    color: "#3498db",
+                    image: "https://media.discordapp.net/attachments/1294980064907104326/1294980474283757639/standard.gif?ex=670cfc0c&is=670baa8c&hm=7cdce1c55cb1a7b325729a25b05f89214e41ab1b674a3c9b49638491043bff32&",
+                    color: "#ff0000",
                     thumbnail: "https://media.discordapp.net/attachments/1294778255462895658/1294994762973315122/image.png?ex=670d095b&is=670bb7db&hm=214aba1739e717eaaae64874756d305086a8b4d33a0e5066bc171e706555f83c&",
                     author: {
-                        name: 'All In One',
-                        iconURL: "https://cdn.discordapp.com/attachments/1246408947708072027/1255167194036437093/1558-zerotwo-exciteddance.gif?ex=667c250a&is=667ad38a&hm=09e6db36fd79436eb57de466589f21ca947329edd69b8e591d0f6586b89df296&",
+                        name: 'Rax> | Management',
+                        iconURL: "https://cdn.discordapp.com/attachments/1230824451990622299/1253655047259160596/6186-developer-bot.gif?ex=66a9667f&is=66a814ff&hm=1494b63ccfaf2dae30a35af520fb748dd17e76195c206f2925b526595018c60f&",
                         url: "https://discord.gg/FGMwJhkwKT"
                     }
                 });
@@ -293,37 +291,31 @@ module.exports = {
 
                     switch (category) {
                         case 'utility':
-                            page.image = "https://cdn.discordapp.com/attachments/1264134884432285766/1270352605154902151/GlaceYT.gif?ex=66b3638f&is=66b2120f&hm=23878b54affd61573b105db7c1c016eb730911dc762b3fbabac5a32cbc884119&";
-                            page.color = "#00cc99";
+                            page.image = "https://media.discordapp.net/attachments/1294980064907104326/1294980474283757639/standard.gif?ex=670cfc0c&is=670baa8c&hm=7cdce1c55cb1a7b325729a25b05f89214e41ab1b674a3c9b49638491043bff32&";
+                            page.color = "#ff0000";
                             page.thumbnail = "https://media.discordapp.net/attachments/1294778255462895658/1294994762973315122/image.png?ex=670d095b&is=670bb7db&hm=214aba1739e717eaaae64874756d305086a8b4d33a0e5066bc171e706555f83c&";
                             page.author.iconURL = "https://cdn.discordapp.com/attachments/1230824451990622299/1255164064192270418/2861-tool.gif?ex=667c2220&is=667ad0a0&hm=17d2f57af30831b62639fd3d06853a7bc423e1a96b36e5994f432b65aa9f30dc&";
                             break;
                         case 'other':
-                            page.image = "https://cdn.discordapp.com/attachments/1264134884432285766/1270352605154902151/GlaceYT.gif?ex=66b3638f&is=66b2120f&hm=23878b54affd61573b105db7c1c016eb730911dc762b3fbabac5a32cbc884119&";
-                            page.color = "#ff6600";
+                            page.image = "https://media.discordapp.net/attachments/1294980064907104326/1294980474283757639/standard.gif?ex=670cfc0c&is=670baa8c&hm=7cdce1c55cb1a7b325729a25b05f89214e41ab1b674a3c9b49638491043bff32&";
+                            page.color = "#ff0000";
                             page.thumbnail = "https://media.discordapp.net/attachments/1294778255462895658/1294994762973315122/image.png?ex=670d095b&is=670bb7db&hm=214aba1739e717eaaae64874756d305086a8b4d33a0e5066bc171e706555f83c&";
                             page.author.iconURL = "https://cdn.discordapp.com/attachments/1230824451990622299/1253655047259160596/6186-developer-bot.gif?ex=66a9667f&is=66a814ff&hm=1494b63ccfaf2dae30a35af520fb748dd17e76195c206f2925b526595018c60f&";
                             break;
-                        case 'hentai':
-                            page.image = "https://cdn.discordapp.com/attachments/1246408947708072027/1255160148272353373/Rias.gif?ex=667c1e7b&is=667accfb&hm=cd9d086020fd0e062be92126942d1d683c15a878bb699b000d9db9a34447eb6c&";
-                            page.color = "#ff99cc";
-                            page.thumbnail = "https://media.discordapp.net/attachments/1294778255462895658/1294994762973315122/image.png?ex=670d095b&is=670bb7db&hm=214aba1739e717eaaae64874756d305086a8b4d33a0e5066bc171e706555f83c&";
-                            page.author.iconURL = "https://cdn.discordapp.com/attachments/1230824451990622299/1230824519220985896/6280-2.gif?ex=667beaa8&is=667a9928&hm=50dfab0b5a63dab7abdc167899c447041b9717016c71e4ffe377a0d7a989d6b5&";
-                            break;
                         case 'lavalink':
-                            page.image = "https://cdn.discordapp.com/attachments/1264134884432285766/1270352605154902151/GlaceYT.gif?ex=66b3638f&is=66b2120f&hm=23878b54affd61573b105db7c1c016eb730911dc762b3fbabac5a32cbc884119&";
-                            page.color = "#ffcc00";
+                            page.image = "https://media.discordapp.net/attachments/1294980064907104326/1294980474283757639/standard.gif?ex=670cfc0c&is=670baa8c&hm=7cdce1c55cb1a7b325729a25b05f89214e41ab1b674a3c9b49638491043bff32&";
+                            page.color = "#ff0000";
                             page.thumbnail = "https://media.discordapp.net/attachments/1294778255462895658/1294994762973315122/image.png?ex=670d095b&is=670bb7db&hm=214aba1739e717eaaae64874756d305086a8b4d33a0e5066bc171e706555f83c&";
                             page.author.iconURL = "https://cdn.discordapp.com/attachments/1230824451990622299/1253655047259160596/6186-developer-bot.gif?ex=66a9667f&is=66a814ff&hm=1494b63ccfaf2dae30a35af520fb748dd17e76195c206f2925b526595018c60f&";
                             break;
                         case 'troll':
-                            page.image = "https://cdn.discordapp.com/attachments/1264134884432285766/1270352605154902151/GlaceYT.gif?ex=66b3638f&is=66b2120f&hm=23878b54affd61573b105db7c1c016eb730911dc762b3fbabac5a32cbc884119&";
-                            page.color = "#cc0000";
+                            page.image = "https://media.discordapp.net/attachments/1294980064907104326/1294980474283757639/standard.gif?ex=670cfc0c&is=670baa8c&hm=7cdce1c55cb1a7b325729a25b05f89214e41ab1b674a3c9b49638491043bff32&";
+                            page.color = "#ff0000";
                             page.thumbnail = "https://media.discordapp.net/attachments/1294778255462895658/1294994762973315122/image.png?ex=670d095b&is=670bb7db&hm=214aba1739e717eaaae64874756d305086a8b4d33a0e5066bc171e706555f83c&";
                             page.author.iconURL = "https://cdn.discordapp.com/attachments/1230824451990622299/1253655047259160596/6186-developer-bot.gif?ex=66a9667f&is=66a814ff&hm=1494b63ccfaf2dae30a35af520fb748dd17e76195c206f2925b526595018c60f&";
                             break;
                         default:
-                            page.color = "#3498db"; // Set a default color if none matches
+                            page.color = "#ff0000"; // Set a default color if none matches
                             break;
                     }
 
