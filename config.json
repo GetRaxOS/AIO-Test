@@ -6,10 +6,10 @@
     "geniusToken": "0CHr9jtPjR7EKraXUVv6__8ELmEwFeUwt5vYAhk-is_fGOq-10-epdMzESkMPUnf",
     "excessCommands": {
         "utility": true,
-        "other": false,
+        "other": true,
         "hentai": true,
         "lavalink": false,
-        "troll": true
+        "troll": false
     },
     "categories": {
         "anime": false,
