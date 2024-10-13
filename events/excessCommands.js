@@ -8,9 +8,6 @@ module.exports = {
     async execute(message, client) {
         if (message.author.bot) return;
 
-       
-
-      
         let serverConfig;
         try {
             serverConfig = await serverConfigCollection.findOne({ serverId: message.guild.id });
@@ -18,7 +15,6 @@ module.exports = {
             console.error('Error fetching server configuration from MongoDB:', err);
         }
 
-       
         const prefix = serverConfig && serverConfig.prefix ? serverConfig.prefix : config.prefix;
 
         if (!message.content.startsWith(prefix)) return;
@@ -32,14 +28,13 @@ module.exports = {
             return path.join(__dirname, '..', 'excesscommands', category, `${commandName}.js`);
         };
 
-        
         if (config.excessCommands) {
-                command = require(getCommandPath('lavalink', commandName));
-            } else if (config.excessCommands.troll && fs.existsSync(getCommandPath('troll', commandName))) {
+            command = require(getCommandPath('lavalink', commandName));
+            if (!command && config.excessCommands.troll && fs.existsSync(getCommandPath('troll', commandName))) {
                 command = require(getCommandPath('troll', commandName));
-            } else if (config.excessCommands.other && fs.existsSync(getCommandPath('other', commandName))) {
+            } else if (!command && config.excessCommands.other && fs.existsSync(getCommandPath('other', commandName))) {
                 command = require(getCommandPath('other', commandName));
-            } else if (config.excessCommands.utility && fs.existsSync(getCommandPath('utility', commandName))) {
+            } else if (!command && config.excessCommands.utility && fs.existsSync(getCommandPath('utility', commandName))) {
                 command = require(getCommandPath('utility', commandName));
             }
         }
@@ -61,13 +56,18 @@ module.exports = {
     }
 };
 
-
-
-
 async function logCommandCounts() {
     const folders = ['lavalink', 'troll', 'other', 'utility'];
     const basePath = path.join(__dirname, '..', 'excesscommands');
     let totalCommands = 0;
+    const counts = []; // Added initialization for counts
+
+    // Loop to count commands (assuming this was intended)
+    for (const folder of folders) {
+        const commandFiles = fs.readdirSync(path.join(basePath, folder)).filter(file => file.endsWith('.js'));
+        counts.push({ folder, count: commandFiles.length, status: 'Enabled' });
+        totalCommands += commandFiles.length;
+    }
 
     const maxFolderLength = Math.max(...counts.map(({ folder }) => folder.length));
     const totalCountLength = `Total number of commands: ${totalCommands}`.length;
