@@ -2,7 +2,7 @@
     "token": "",
     "language": "en",
     "prefix": "!",
-    "mongodbUri": "mongodb+srv://<db_username>:<db_password>@aiotest.ket2m.mongodb.net/?retryWrites=true&w=majority&appName=AIOTEST",
+    "mongodbUri": "mongodb+srv://Fuze:GAMING@aiotest.ket2m.mongodb.net/?retryWrites=true&w=majority&appName=AIOTEST",
     "geniusToken": "0CHr9jtPjR7EKraXUVv6__8ELmEwFeUwt5vYAhk-is_fGOq-10-epdMzESkMPUnf",
     "excessCommands": {
         "utility": true,
