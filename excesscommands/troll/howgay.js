@@ -5,11 +5,11 @@ module.exports = {
     name: 'howgay',
     description: lang.howgayDescription,
     execute(message, args) {
-        var result = Math.ceil(Math.random() * 100);
+        var result = Math.ceil(Math.random() * 101);
 
         const embed = new EmbedBuilder()
             .setTitle(lang.howgayTitle)
-            .setDescription(`${lang.howgayDescriptionText} ${result}% gay`)
+            .setDescription(`${lang.howgayDescriptionText} ${result}% gay.`)
             .setColor('#ff69b4');
 
         message.reply({ embeds: [embed] });
