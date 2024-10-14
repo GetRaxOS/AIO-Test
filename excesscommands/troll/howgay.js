@@ -9,7 +9,7 @@ module.exports = {
 
         const embed = new EmbedBuilder()
             .setTitle(lang.howgayTitle)
-            .setDescription(`${lang.howgayDescriptionText} ${result}%!`)
+            .setDescription(`${lang.howgayDescriptionText} ${result}%!` gay)
             .setColor('#ff69b4');
 
         message.reply({ embeds: [embed] });
